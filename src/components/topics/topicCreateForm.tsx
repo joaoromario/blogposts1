@@ -49,6 +49,13 @@ export default function TopicCreateForm() {
               isInvalid={!!formState.errors.description} //if there is an error, the input field will be highlighted
               errorMessage={formState.errors.description?.join(", ")} //if there is an error, the error message will be displayed
             />
+
+            {formState.errors._form && (
+              <div className="text-red-500">
+                {formState.errors._form.join(", ")}
+              </div>
+            )}
+
             <Button type="submit" color="primary">
               Submit
             </Button>

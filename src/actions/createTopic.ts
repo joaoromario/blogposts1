@@ -13,7 +13,7 @@ const createTopicSchema = z.object({
   description: z.string().min(10),
 });
 
-export async function createTopic(formData: FormData) {
+export async function createTopic(formState: number, formData: FormData) {
   const result = createTopicSchema.safeParse({
     name: formData.get("name"),
     description: formData.get("description"),
@@ -24,5 +24,7 @@ export async function createTopic(formData: FormData) {
   } else {
     console.log(result.data);
   }
+
+  return 10; //matching the useActionState hook in the topicCreateForm component
   //TODO: revalidate the homepage after creating a topic
 }

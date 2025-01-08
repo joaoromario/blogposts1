@@ -4,10 +4,9 @@ import type { Post } from "@prisma/client";
 import { revalidatePath } from "next/cache";
 import { redirect } from "next/navigation";
 import { z } from "zod";
-import { auth } from "@/actions/auth";
-import { db } from "@/actions/db";
+import { auth } from "@/auth";
+import { db } from "@/app/db";
 import paths from "@/paths";
-import { title } from "process";
 
 const createPostSchema = z.object({
   title: z.string().min(3),
@@ -60,7 +59,33 @@ export async function createPost(
     };
   }
 
-  return { errors: {} };
+  let post: Post;
+  try {
+    post = await db.post.create({
+      data: {
+        title: result.data.title,
+        content: result.data.content,
+        userId: session.user.id!,
+        topicId: topic.id,
+      },
+    });
+  } catch (error: unknown) {
+    if (error instanceof Error) {
+      return {
+        errors: {
+          _form: [error.message],
+        },
+      };
+    } else {
+      return {
+        errors: {
+          _form: ["Failed to create post."],
+        },
+      };
+    }
+  }
 
-  //TODO: revalidate topic show page after creating a post
+  //revalidate topic show page after creating a post
+  revalidatePath(paths.topicShowPath(slug));
+  redirect(paths.postShowPath(slug, post.id));
 }

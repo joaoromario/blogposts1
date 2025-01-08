@@ -45,6 +45,12 @@ export default function PostCreateForm() {
               labelPlacement="outside"
             />
 
+            {formState.errors._form && (
+              <div className="text-red-500">
+                {formState.errors._form.join(", ")}
+              </div>
+            )}
+
             <FormButton isLoading={isPending}>Create Post</FormButton>
           </div>
         </form>

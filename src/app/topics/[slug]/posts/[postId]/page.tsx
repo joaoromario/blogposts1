@@ -1,5 +1,24 @@
+import PostShow from "@/components/posts/postShow";
+import paths from "@/paths";
+import Link from "next/link";
 import React from "react";
 
-export default function PostShowPage() {
-  return <div>Post Show Page</div>;
+interface PostShowPageProps {
+  params: Promise<{
+    slug: string;
+    postId: string;
+  }>;
+}
+
+export default async function PostShowPage({ params }: PostShowPageProps) {
+  const { slug, postId } = await params;
+
+  return (
+    <div className="space-y-3">
+      <Link href={paths.topicShowPath(slug)}>
+        {"<"}Back to {slug}
+      </Link>
+      <PostShow postId={postId} />
+    </div>
+  );
 }

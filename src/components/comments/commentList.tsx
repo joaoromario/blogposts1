@@ -14,11 +14,7 @@ export default async function CommentList({ postId }: CommentListProps) {
   );
   const renderedComments = topLevelComments.map((comment) => {
     return (
-      <CommentShow
-        key={comment.id}
-        commentId={comment.id}
-        comments={comments}
-      />
+      <CommentShow key={comment.id} commentId={comment.id} postId={postId} />
     );
   });
 

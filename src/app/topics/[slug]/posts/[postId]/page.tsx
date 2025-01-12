@@ -5,6 +5,7 @@ import PostShow from "@/components/posts/postShow";
 import paths from "@/paths";
 import Link from "next/link";
 import React from "react";
+import PostShowLoading from "@/components/posts/postShowLoading";
 
 interface PostShowPageProps {
   params: Promise<{
@@ -21,7 +22,7 @@ export default async function PostShowPage({ params }: PostShowPageProps) {
       <Link href={paths.topicShowPath(slug)}>
         {"<"}Back to {slug}
       </Link>
-      <Suspense fallback={<div>Loading...</div>}>
+      <Suspense fallback={<PostShowLoading />}>
         <PostShow postId={postId} />
       </Suspense>
       <CommentCreateForm postId={postId} startOpen />

@@ -6,6 +6,9 @@ interface PostShowProps {
 }
 
 export default async function PostShow({ postId }: PostShowProps) {
+  //slowing down the page load to simulate a slow network and use Suspense
+  await new Promise((resolve) => setTimeout(resolve, 2500));
+
   const post = await db.post.findFirst({
     where: { id: postId },
   });

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { Suspense } from "react";
 import Link from "next/link";
 import {
   Navbar,
@@ -21,7 +21,9 @@ export default function Header() {
       {/* search input */}
       <NavbarContent justify="center">
         <NavbarItem>
-          <SearchInput />
+          <Suspense>
+            <SearchInput />
+          </Suspense>
         </NavbarItem>
       </NavbarContent>
 

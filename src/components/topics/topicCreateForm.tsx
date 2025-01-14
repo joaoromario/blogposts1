@@ -29,7 +29,9 @@ export default function TopicCreateForm() {
   return (
     <Popover placement="left">
       <PopoverTrigger>
-        <Button color="primary">Create Topic</Button>
+        <Button color="primary" className="p-2 sm:p-4">
+          Create Topic
+        </Button>
       </PopoverTrigger>
       <PopoverContent>
         <form onSubmit={handleSubmit}>

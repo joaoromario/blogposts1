@@ -11,7 +11,11 @@ export default async function TopicList() {
     return (
       <div key={topic.id}>
         <Link href={paths.topicShowPath(topic.slug)}>
-          <Chip color="warning" variant="shadow">
+          <Chip
+            color="warning"
+            variant="shadow"
+            className="flex flex-wrap text-xs sm:text-base"
+          >
             {topic.slug}
           </Chip>
         </Link>

@@ -13,6 +13,7 @@ export default function SearchInput() {
         name="term"
         placeholder="Search"
         defaultValue={searchParams.get("term") || ""}
+        className="w-64"
       />
     </form>
   );

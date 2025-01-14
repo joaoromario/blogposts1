@@ -19,7 +19,7 @@ export default function Header() {
       </NavbarBrand>
 
       {/* search input */}
-      <NavbarContent>
+      <NavbarContent className="sm:flex sm:w-40 lg:w-80">
         <NavbarItem>
           <Suspense>
             <SearchInput />

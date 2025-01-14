@@ -13,7 +13,7 @@ export default function SearchInput() {
         name="term"
         placeholder="Search"
         defaultValue={searchParams.get("term") || ""}
-        className="w-80"
+        className="sm:w-52 lg:w-80 xl:w-96"
       />
     </form>
   );

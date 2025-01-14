@@ -43,18 +43,23 @@ export default function HeaderAuth() {
       <>
         <NavbarItem>
           <form action={actions.signIn}>
-            <Button type="submit" color="secondary" variant="bordered">
-              Sign In
+            <Button
+              type="submit"
+              color="secondary"
+              variant="bordered"
+              className="p-2 sm:p-4"
+            >
+              Sign In/up
             </Button>
           </form>
         </NavbarItem>
-        <NavbarItem>
+        {/* <NavbarItem>
           <form action={actions.signIn}>
             <Button type="submit" color="primary" variant="flat">
               Sign Up
             </Button>
           </form>
-        </NavbarItem>
+        </NavbarItem> */}
       </>
     );
   }
